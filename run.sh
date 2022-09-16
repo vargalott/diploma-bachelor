@@ -21,7 +21,7 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 : ${PROJ_ROOT_DIR=$PWD}
-: ${APP_NAME="diploma"}
+: ${APP_NAME="diploma-bachelor"}
 
 export DIALOGRC=$PROJ_ROOT_DIR/utility/.default.dialogrc
 

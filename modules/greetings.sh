@@ -20,7 +20,7 @@ source $PROJ_ROOT_DIR/utility/utility.sh
 
 dialog_greetings() {
   hello="
-    Diploma project designed to interactively demonstrate the main
+    Bachelor diploma project designed to interactively demonstrate the main
     aspects of information security using the most popular and
     demanded open source utilities.
 

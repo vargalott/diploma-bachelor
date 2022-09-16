@@ -37,7 +37,7 @@ class DB:
     @staticmethod
     def init_db():
         query = f'''
-        CREATE TABLE IF NOT EXISTS diploma_module (
+        CREATE TABLE IF NOT EXISTS diploma_bachelor_module (
             id INTEGER PRIMARY KEY,
             name TEXT,
             description TEXT,
@@ -48,14 +48,14 @@ class DB:
         DB.cursor().execute(query)
 
         query = f'''
-        CREATE TABLE IF NOT EXISTS diploma_log (
+        CREATE TABLE IF NOT EXISTS diploma_bachelor_log (
             id INTEGER PRIMARY KEY,
             datetime DATETIME,
             message TEXT,
             status TEXT,
             module_id INTEGER,
 
-            FOREIGN KEY(module_id) REFERENCES diploma_module(id)
+            FOREIGN KEY(module_id) REFERENCES diploma_bachelor_module(id)
         )
         '''
         DB.cursor().execute(query)
@@ -65,13 +65,13 @@ class DB:
     @staticmethod
     def log(module, datetime, message, status):
         query = f'''
-            INSERT OR IGNORE INTO diploma_module(name) VALUES('{module}')
+            INSERT OR IGNORE INTO diploma_bachelor_module(name) VALUES('{module}')
         '''
         DB.cursor().execute(query)
 
         query = f'''
-        INSERT INTO diploma_log (module_id,datetime,message,status)
-        SELECT id,'{datetime}','{message}','{status}' FROM diploma_module
+        INSERT INTO diploma_bachelor_log (module_id,datetime,message,status)
+        SELECT id,'{datetime}','{message}','{status}' FROM diploma_bachelor_module
         WHERE name='{module}'
         '''
         DB.cursor().execute(query)
@@ -82,7 +82,7 @@ class DB:
     def get_all():
         cursor = DB.cursor()
         query = f'''
-            SELECT * FROM diploma_log
+            SELECT * FROM diploma_bachelor_log
             ORDER BY datetime DESC
         '''
 
@@ -93,7 +93,7 @@ class DB:
     def get_by_date_range(date_start, date_end):
         cursor = DB.cursor()
         query = f'''
-            SELECT * FROM diploma_log
+            SELECT * FROM diploma_bachelor_log
             WHERE datetime BETWEEN '{date_start}' AND '{date_end}'
             ORDER BY datetime DESC
         '''
@@ -105,7 +105,7 @@ class DB:
     def get_by_module(module):
         cursor = DB.cursor()
         query = f'''
-            SELECT * FROM diploma_log
+            SELECT * FROM diploma_bachelor_log
             WHERE module='{module}'
             ORDER BY datetime DESC
         '''
@@ -116,7 +116,7 @@ class DB:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description="DBMS sqlite wrapper for diploma")
+        description="DBMS sqlite wrapper for diploma-bachelor")
     parser.add_argument('-f', '--file', help='path to database', type=str)
     parser.add_argument('-l', '--log', help='save log to database', nargs='+')
     parser.add_argument('-a', '--all', help='select all', action='store_true')

@@ -1,6 +1,6 @@
 <p align="center"><img src="logo.png" width="400"></p>
 
-# diploma
+# diploma-bachelor
 
 This diploma project is designed to interactively demonstrate the main aspects of information security using the most popular and demanded open source utilities.
 
@@ -38,7 +38,7 @@ Make sure you have installed these apps successfully before use this project:
    * [nmap](https://nmap.org/download.html)
    * [siege](https://github.com/JoeDog/siege)
 
-  > Note than you also have ability to use python venv test server for testing purposes: [diploma-nms](https://github.com/andinoriel/diploma-nms)
+  > Note that you also have ability to use python venv test server for testing purposes: [diploma-bachelor-nms](https://github.com/andinoriel/diploma-bachelor-nms)
 
 4. Module:restore
    * [ext4magic](https://sourceforge.net/projects/ext4magic/)
@@ -81,7 +81,7 @@ $ sudo docker container start cadvisor
 $ sudo docker container stop cadvisor
 ```
 
-6. You've done! Test server is now online and await for clients on http://127.0.0.1:4723; you can inspect the running containerized test server on http://127.0.0.1:8080/docker/ - just choose the 'extern_diploma_1' (or something like this).
+6. You've done! Test server is now online and await for clients on http://127.0.0.1:4723; you can inspect the running containerized test server on http://127.0.0.1:8080/docker/ - just choose the 'extern_diploma_bachelor_1' (or something like this).
 
 ## Screenshots
 

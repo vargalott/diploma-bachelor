@@ -49,7 +49,7 @@
 : ${RC_OK=0}
 : ${RC_ERROR=1}
 
-: ${PROJ_DB_PATH=$PROJ_ROOT_DIR/out/diploma.sqlite}
+: ${PROJ_DB_PATH=$PROJ_ROOT_DIR/out/diploma_bachelor.sqlite}
 
 # RESOLVE_FUNC_CALL $@
 RESOLVE_FUNC_CALL() {

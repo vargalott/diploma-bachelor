@@ -15,7 +15,7 @@
 #
 # =================================================================
 
-# see more https://github.com/andinoriel/diploma-nms
+# see more https://github.com/andinoriel/diploma-bachelor-nms
 
 import falcon
 

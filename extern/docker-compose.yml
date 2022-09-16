@@ -18,8 +18,8 @@
 version: '3'
 
 services:
-  diploma:
-    image: diploma
+  diploma-bachelor:
+    image: diploma-bachelor-server
     ports:
       - "4723:4723"
     build:
