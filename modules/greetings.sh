@@ -24,7 +24,7 @@ dialog_greetings() {
     aspects of information security using the most popular and
     demanded open source utilities.
 
-    -------------- 2021 Mykola Symon - Copyright (c) --------------
+    -------------- 2021-2022 Mykola Symon - Copyright (c) --------------
   "
   disclaimer="
     THIS SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -36,8 +36,8 @@ dialog_greetings() {
     SOFTWARE.
   "
 
-  if $DIALOG --title "$APP_NAME" --msgbox "$hello" 11 70 3>&1 1>&2 2>&3; then
-    if $DIALOG --title "DISCLAIMER" --msgbox "$disclaimer" 13 83 3>&1 1>&2 2>&3; then
+  if $DIALOG --title "$APP_NAME" --msgbox "$hello" 12 80 3>&1 1>&2 2>&3; then
+    if $DIALOG --title "DISCLAIMER" --msgbox "$disclaimer" 12 80 3>&1 1>&2 2>&3; then
       return
     else
       CLEAR_EXIT
