@@ -6,21 +6,28 @@ This diploma project is designed to interactively demonstrate the main aspects o
 
 ## Usage
 
-1. Clone this project and then cd to the project folder;
+1. Install [Docker](https://docs.docker.com/engine/installation/), [Docker Compose](https://docs.docker.com/compose/install/) and [Task](https://taskfile.dev/#/installation);
 
-2. Now just run the main script file:
-```
-$ bash ./run.sh
+2. Clone this project and then cd to the project folder;
 
-OR
-
-$ chmod +x ./run.sh
-$ ./run.sh
+3. Run the initial build of the environment:
+```sh
+$ task init
 ```
 
-## Requirements
+3. Now you just need to run the application:
+```sh
+$ task run
+```
 
-Make sure you have installed these apps successfully before use this project:
+4. After finishing work, you can stop running containers:
+```sh
+$ task stop # to just stop running application
+$ task down # also stop and remove containers
+```
+
+## List of used applications
+
 1. Core
    * [bash](https://www.gnu.org/software/bash/)
    * [dialog](https://invisible-island.net/dialog/#download)
@@ -53,35 +60,23 @@ You can use benchmark for provided test server using it as a containerized docke
 1. Install [docker](https://docs.docker.com/engine/installation/) and [docker-compose](https://docs.docker.com/compose/install/);
 
 2. Run the initial build of the environment for the test server:
-```
+```sh
 $ cd ./extern
-$ docker-compose build
+$ task init
 ```
 
-3. Run the test server:
-```
-$ docker-compose up
-```
-
-4. Now run the Google cAdvisor utility using this command:
-```
-$ sudo docker run \
-  --volume=/:/rootfs:ro \
-  --volume=/var/run:/var/run:rw \
-  --volume=/sys:/sys:ro \
-  --volume=/var/lib/docker/:/var/lib/docker:ro \
-  --publish=8080:8080 \
-  --name=cadvisor \
-  gcr.io/cadvisor/cadvisor:v0.37.5
+3. Run the test server and Google cAdvisor utility:
+```sh
+$ task run
 ```
 
-5. Further, to start and stop the container use:
-```
-$ sudo docker container start cadvisor
-$ sudo docker container stop cadvisor
-```
+4. Test server is now online and await for clients on http://127.0.0.1:4723; you can inspect the running containerized test server on http://127.0.0.1:8080/docker/ - just choose the 'extern-diploma-bachelor-server-1'.
 
-6. You've done! Test server is now online and await for clients on http://127.0.0.1:4723; you can inspect the running containerized test server on http://127.0.0.1:8080/docker/ - just choose the 'extern_diploma_bachelor_1' (or something like this).
+5. After finishing work, you can stop running containers:
+```sh
+$ task stop # to just stop running applications
+$ task down # also stop and remove containers
+```
 
 ## Screenshots
 
@@ -123,7 +118,7 @@ $ sudo docker container stop cadvisor
 
 My thanks to the developers of the [Docker](https://www.docker.com/company), [Bash](https://www.gnu.org/software/bash/) and [Python](https://www.python.org/psf-landing/).
 
-Also thanks to the developers of all the utilities mentioned in the [requirements](#requirements) section
+Also thanks to the developers of all the utilities mentioned in the [](#) section
 
 ## License
 
