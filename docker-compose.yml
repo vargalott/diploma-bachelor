@@ -11,10 +11,11 @@ services:
       - mysql
     stdin_open: true
     tty: true
+    networks:
+      - app-network
 
   mysql:
     image: mysql:5.7
-    container_name: mysql
     restart: unless-stopped
     ports:
       - "3306:3306"
