@@ -24,7 +24,6 @@ RUN apt-get install -y \
 
 RUN pip3 install argparse datetime
 
-WORKDIR /app
 COPY . /app
 
 USER appuser
