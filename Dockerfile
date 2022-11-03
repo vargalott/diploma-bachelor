@@ -25,6 +25,7 @@ RUN apt-get install -y \
 RUN pip3 install argparse datetime
 
 COPY . /app
+WORKDIR /app
 
 USER appuser
 CMD [ "bash", "run.sh" ]
