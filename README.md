@@ -4,6 +4,10 @@
 
 This diploma project is designed to interactively demonstrate the main aspects of information security using the most popular and demanded open source utilities.
 
+## Graduate Documents
+
+See [Diploma](scans/diploma.pdf), [Diploma Supplement](scans/diploma_supplement.pdf).
+
 ## Usage
 
 1. Install [Docker](https://docs.docker.com/engine/installation/), [Docker Compose](https://docs.docker.com/compose/install/) and [Task](https://taskfile.dev/#/installation);
