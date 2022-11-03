@@ -7,21 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.4.0] - 2022-11-03
 
-## Fixed
+### Fixed
 * docker workaround
 * Module:encryption
 
 ## [1.3.3] - 2022-11-03
 
-## Fixed
+### Fixed
 * Dockerfile
 
 ## [1.3.2] - 2022-11-03
 
-## Added
+### Added
 * graduate scans
 
-## Fixed
+### Fixed
 * Dockerfile
 
 ## [1.3.1] - 2022-09-21
@@ -52,7 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.1] - 2021-05-17
 
-## Fixed
+### Fixed
 * Text's
 
 ## [1.1.0] - 2021-05-17
