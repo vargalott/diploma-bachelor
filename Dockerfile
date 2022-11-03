@@ -30,4 +30,4 @@ RUN apt-get install -y \
 COPY . .
 
 USER appuser
-CMD [ "run.sh" ]
+CMD [ "bash", "run.sh" ]
