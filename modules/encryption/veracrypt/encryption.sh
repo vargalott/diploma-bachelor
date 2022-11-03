@@ -185,7 +185,7 @@ dialog_modules_encryption_veracrypt_encrypt() {
           local log=$PROJ_ROOT_DIR/out/veracrypt$(date +%F_%H-%M-%S).log
           # creating vc volume
           # note: --hash=<RIPEMD-160|SHA-256|SHA-512|Whirlpool|Streebog>
-          (veracrypt -t --size=$size --password="$password" -k "" \
+          (veracrypt -m=nokernelcrypto -t --size=$size --password="$password" -k "" \
             --random-source=/dev/urandom --volume-type=normal \
             --encryption=$encalg --hash=SHA-512 --filesystem=FAT \
             --pim=0 -c "$PROJ_ROOT_DIR/out/$fdname.vc" 2>&1) | tee "$log" | $DIALOG --progressbox 20 70
@@ -199,14 +199,14 @@ dialog_modules_encryption_veracrypt_encrypt() {
           rm -f $log
 
           # mount created volume
-          sudo -S -k -p "" veracrypt -t --pim=0 --keyfiles="" --protect-hidden=no \
+          sudo -S -k -p "" veracrypt -m=nokernelcrypto -t --pim=0 --keyfiles="" --protect-hidden=no \
             --password="$password" --mount "$PROJ_ROOT_DIR/out/$fdname.vc" "$mntdir" <<<"$rpass"
 
           # copy selected file or dir to the volume
           cp -r "$path" "$mntdir"
 
           # unmount created volume
-          sudo -S -k -p "" veracrypt -t -d "$PROJ_ROOT_DIR/out/$fdname.vc" <<<"$rpass"
+          sudo -S -k -p "" veracrypt -m=nokernelcrypto -t -d "$PROJ_ROOT_DIR/out/$fdname.vc" <<<"$rpass"
 
           rmdir "$mntdir"
 

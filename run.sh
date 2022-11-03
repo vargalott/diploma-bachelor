@@ -36,11 +36,13 @@ app_cleanup() {
   unset DIALOGRC
 }
 
-trap ctrl_c INT
 ctrl_c() {
   app_cleanup
   CLEAR_EXIT
 }
+trap ctrl_c INT
+trap ctrl_c QUIT
+trap ctrl_c TSTP
 
 mkdir -p $PROJ_ROOT_DIR/out/
 

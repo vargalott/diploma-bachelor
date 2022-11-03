@@ -58,14 +58,14 @@ modules_encryption_veracrypt_bench_inner() {
         local container_name="$benchdir/vcc$(date +%F_%H-%M-%S).vc"
 
         # creating vc volume and time it
-        local volume_create_time=$( (time (veracrypt -t --size=$current_size --password="$password" -k "" \
+        local volume_create_time=$( (time (veracrypt -m=nokernelcrypto -t --size=$current_size --password="$password" -k "" \
           --random-source=/dev/urandom --volume-type=normal \
           --encryption=$current_encalg --hash=$current_hash --filesystem=FAT \
           --pim=0 -c "$container_name")) 2>&1 |
           grep -i "real" | sed "s/real//" | sed "s/ //g" | tr "\t" " ")
 
         # mount created volume
-        veracrypt -t --pim=0 --keyfiles="" --protect-hidden=no \
+        veracrypt -m=nokernelcrypto -t --pim=0 --keyfiles="" --protect-hidden=no \
           --password="$password" --mount "$container_name" "$mntdir"
 
         local fill_time_start=$(date +%s)
@@ -94,7 +94,7 @@ modules_encryption_veracrypt_bench_inner() {
           "$volume_create_time" "$volume_fill_time" "$elapsed_fill_speed"
 
         # unmount created volume
-        veracrypt -t -d "$container_name"
+        veracrypt -m=nokernelcrypto -t -d "$container_name"
 
         rm -f "$container_name"
 

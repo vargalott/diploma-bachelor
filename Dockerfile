@@ -1,8 +1,13 @@
 FROM ubuntu:focal
 
-RUN groupadd -g 999 appuser && useradd -r -u 999 -g appuser appuser
-RUN mkdir -p /app
-RUN chown appuser:appuser /app
+SHELL ["/bin/bash", "-c"]
+WORKDIR /app
+
+RUN groupadd -g 999 appuser
+RUN useradd -r -u 999 -g appuser appuser
+RUN adduser appuser sudo
+RUN chown appuser:appuser .
+RUN chpasswd <<<"appuser:root"
 
 RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository ppa:stefansundin/truecrypt
@@ -22,10 +27,7 @@ RUN apt-get install -y \
   foremost \
   scalpel
 
-RUN pip3 install argparse datetime
-
-COPY . /app
-WORKDIR /app
+COPY . .
 
 USER appuser
-CMD [ "bash", "run.sh" ]
+CMD [ "run.sh" ]

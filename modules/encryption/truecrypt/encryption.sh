@@ -149,7 +149,7 @@ dialog_modules_encryption_truecrypt_encrypt() {
           local log=$PROJ_ROOT_DIR/out/truecrypt$(date +%F_%H-%M-%S).log
           # creating tc volume
           # note: --hash=<RIPEMD-160|SHA-512|Whirlpool>
-          (truecrypt -t --size=$size --password="$password" -k "" \
+          (truecrypt -m=nokernelcrypto -t --size=$size --password="$password" -k "" \
             --random-source=/dev/urandom --volume-type=normal \
             --encryption=$encalg --hash=SHA-512 --filesystem=FAT \
             -c "$PROJ_ROOT_DIR/out/$fdname.tc" 2>&1) | tee "$log" | $DIALOG --progressbox 20 70
@@ -163,13 +163,13 @@ dialog_modules_encryption_truecrypt_encrypt() {
           rm -f $log
 
           # mount created volume
-          sudo -S -k -p "" truecrypt --password="$password" --mount "$PROJ_ROOT_DIR/out/$fdname.tc" "$mntdir" <<<"$rpass"
+          sudo -S -k -p "" truecrypt -m=nokernelcrypto --password="$password" --mount "$PROJ_ROOT_DIR/out/$fdname.tc" "$mntdir" <<<"$rpass"
 
           # copy selected file or dir to the volume
           cp -r "$path" "$mntdir"
 
           # unmount created volume
-          sudo -S -k -p "" truecrypt -d "$PROJ_ROOT_DIR/out/$fdname.tc" <<<"$rpass"
+          sudo -S -k -p "" truecrypt -m=nokernelcrypto -d "$PROJ_ROOT_DIR/out/$fdname.tc" <<<"$rpass"
 
           rmdir "$mntdir"
 
