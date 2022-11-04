@@ -163,13 +163,13 @@ dialog_modules_encryption_truecrypt_encrypt() {
           rm -f $log
 
           # mount created volume
-          sudo -S -k -p "" truecrypt -m=nokernelcrypto --password="$password" --mount "$PROJ_ROOT_DIR/out/$fdname.tc" "$mntdir" <<<"$rpass"
+          sudo -E -S -k -p "" truecrypt -m=nokernelcrypto --password="$password" --mount "$PROJ_ROOT_DIR/out/$fdname.tc" "$mntdir" <<<"$rpass"
 
           # copy selected file or dir to the volume
           cp -r "$path" "$mntdir"
 
           # unmount created volume
-          sudo -S -k -p "" truecrypt -m=nokernelcrypto -d "$PROJ_ROOT_DIR/out/$fdname.tc" <<<"$rpass"
+          sudo -E -S -k -p "" truecrypt -m=nokernelcrypto -d "$PROJ_ROOT_DIR/out/$fdname.tc" <<<"$rpass"
 
           rmdir "$mntdir"
 

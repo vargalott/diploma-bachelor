@@ -15,15 +15,16 @@
 #
 # =================================================================
 
+export PROJ_ROOT_DIR=$PWD
+export APP_NAME="diploma-bachelor"
+export DIALOGRC=$PROJ_ROOT_DIR/utility/.default.dialogrc
+
+source $PROJ_ROOT_DIR/utility/utility.sh
+
 if [ "$EUID" -eq 0 ]; then
   echo "Running as root is not allowed"
   exit $RC_ERROR
 fi
-
-: ${PROJ_ROOT_DIR=$PWD}
-: ${APP_NAME="diploma-bachelor"}
-
-export DIALOGRC=$PROJ_ROOT_DIR/utility/.default.dialogrc
 
 app_cleanup() {
   rm -rf $PROJ_ROOT_DIR/out/*.log
@@ -45,8 +46,6 @@ trap ctrl_c QUIT
 trap ctrl_c TSTP
 
 mkdir -p $PROJ_ROOT_DIR/out/
-
-source $PROJ_ROOT_DIR/utility/utility.sh
 
 # say hello
 source $PROJ_ROOT_DIR/modules/greetings.sh dialog_greetings

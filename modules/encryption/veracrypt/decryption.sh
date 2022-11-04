@@ -74,7 +74,7 @@ dialog_modules_encryption_veracrypt_decrypt() {
           mkdir -p $PROJ_ROOT_DIR/out/$fdname.dir
 
           # mount volume from a given path
-          sudo -S -k -p "" veracrypt -m=nokernelcrypto -t --pim=0 --keyfiles="" --protect-hidden=no \
+          sudo -E -S -k -p "" veracrypt -m=nokernelcrypto -t --pim=0 --keyfiles="" --protect-hidden=no \
             --password="$password" --mount "$path" "$mntdir" <<<"$rpass"
 
           # move file(s) from the volume
@@ -82,7 +82,7 @@ dialog_modules_encryption_veracrypt_decrypt() {
           mv "$mntdir"/* $PROJ_ROOT_DIR/out/"$fdname".dir
 
           # unmount volume
-          sudo -S -k -p "" veracrypt -m=nokernelcrypto -t -d "$path" <<<"$rpass"
+          sudo -E -S -k -p "" veracrypt -m=nokernelcrypto -t -d "$path" <<<"$rpass"
 
           # delete volume
           rm -f "$path"
