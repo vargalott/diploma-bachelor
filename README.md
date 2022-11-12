@@ -19,12 +19,12 @@ See [Diploma](scans/diploma.pdf), [Diploma Supplement](scans/diploma_supplement.
 $ task init
 ```
 
-3. Now you just need to run the application:
+4. Now you just need to run the application:
 ```sh
 $ task run
 ```
 
-4. After finishing work, you can stop running containers:
+5. After finishing work, you can stop running containers:
 ```sh
 $ task stop # to just stop running application
 $ task down # also stop and remove containers
@@ -122,7 +122,7 @@ $ task down # also stop and remove containers
 
 My thanks to the developers of the [Docker](https://www.docker.com/company), [Bash](https://www.gnu.org/software/bash/) and [Python](https://www.python.org/psf-landing/).
 
-Also thanks to the developers of all the utilities mentioned in the [](#) section
+Also thanks to the developers of all the utilities mentioned in the [List of used applications](#List-of-used-applications) section
 
 ## License
 
